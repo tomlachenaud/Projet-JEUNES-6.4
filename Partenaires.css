@@ -1,0 +1,111 @@
+.titre {
+    padding-bottom: 2%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to right, #ffffff, #cac9c9);
+    margin-left: -1%;
+    margin-right: -0.7%;
+    margin-top: -1%;
+}
+
+.logo {
+    display: block;
+    margin-right: auto;
+    width: 40%;
+    position: absolute;
+}
+
+.texte {
+    color: rgb(95, 94, 94);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 500%;
+    text-align: right;
+    padding-top: 18%;
+}
+
+.IMAGE {
+    position: absolute;
+    margin-top:-80%;
+    margin-right: 20%;
+    margin-left: 20%;
+    justify-content: space-evenly;
+    text-align: center;
+
+}
+
+img {
+    width: 30%;
+}
+
+.bg {
+    opacity: 2%;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.back {
+    margin-top: 15%;
+    position: relative;
+}
+
+.boutons{
+    justify-content: space-evenly;
+    display: flex;
+    background-color:#cac9c9;
+    width:60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    margin-bottom: -5%;
+    
+
+}
+
+.jeune{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #f1f1f100;
+    color:#C62F7C;
+    font-size: x-large;
+    font-weight: light;
+}
+
+.referent{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #f1f1f100;
+    color:#4DA453;
+    font-size: x-large;
+    font-weight: light;
+}
+
+.consultant{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #f1f1f100;
+    color:#00A0D5;
+    font-size: x-large;
+    font-weight: light;
+}
+
+.partenaires{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: rgb(86, 86, 86);
+    color:rgb(252, 252, 252);
+    font-size: x-large;
+    font-weight: light;
+}
+
+.maintext{
+    text-align: justify;
+    padding: 5%;
+    font-size: 125%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(86, 86, 86);
+}

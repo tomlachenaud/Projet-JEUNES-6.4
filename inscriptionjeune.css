@@ -1,0 +1,143 @@
+.titre {
+    padding-bottom: 2%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to right, #ffffff, #cac9c9);
+    margin-left: -1%;
+    margin-right: -0.7%;
+    margin-top: -1%;
+}
+
+.logo {
+    
+    display: block;
+    margin-right: auto;
+    width: 40%;
+    position: absolute;
+}
+
+.texte {
+    color: #C62F7C;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 800%;
+    text-align: right;
+    padding-top: 10%;
+}
+
+.soustexte {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 200%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.boutons{
+    justify-content: space-evenly;
+    display: flex;
+    background-color:#cac9c9;
+    width:60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    margin-bottom: -5%;
+    
+
+}
+
+.jeune{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #C62F7C;
+    color:#ffffff;
+    font-size: x-large;
+    font-weight: light;
+}
+
+.referent{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #f1f1f100;
+    color:#4DA453;
+    font-size: x-large;
+    font-weight: light;
+}
+
+.consultant{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #f1f1f100;
+    color:#00A0D5;
+    font-size: x-large;
+    font-weight: light;
+}
+
+.partenaires{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #f1f1f100;
+    color:rgb(86, 86, 86);
+    font-size: x-large;
+    font-weight: light;
+}
+
+.inscription{
+    border: solid 1px #DE86B2;
+    background-color: rgb(255, 255, 255);
+    margin-left: 23%;
+    margin-right: 23%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #C62F7C;
+    position : relative;
+    font-weight: bold;
+    font-size: x-large;
+    padding: 1.5%;
+
+}
+
+
+.bg {
+    width: 90%;
+    margin-top: -15%;
+    margin-left: 2%;
+}
+
+.main{
+    padding-top: 7%;
+}
+
+.textehaut{
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: light;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .form-group label {
+    width: max-content;
+    text-align: left;
+    margin-right: 10px;
+  }
+
+  .form-group input {
+    flex: 1;
+    padding: 5px;
+  }
+
+
+
+  .textehaut{
+    color:#C62F7C;
+    font-weight: lighter;
+    text-align: center;
+  }
