@@ -48,8 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
 
         </div>
-
-        perkhfzeiof
         
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <label for="email">Email :</label>
