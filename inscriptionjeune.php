@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Création du nom de fichier basé sur l'adresse e-mail
         $filename = $email . ".txt";
+        $_SESSION['email'] =$email;
         $_SESSION['filename'] =$email . ".txt";
         
         // Création du contenu à écrire dans le fichier
@@ -28,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contenu .=  $social . "\n";
         $contenu .=  $engagement . "\n";
         $contenu .=  $duree . "\n";
-        file_put_contents($filename, $contenu);
+        mkdir($email);
+        file_put_contents($email.'/'.$filename, $contenu);
 
         header("Location: Jeune.php");
         exit();
@@ -41,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="icon" href="LOGO 1.png">
+    <link rel="icon" href="LOGO/LOGO 1.png">
         <title >Inscription Jeune</title>
         <link rel="stylesheet" href="inscriptionjeune.css">
 
@@ -49,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
     <body>
     <div class="titre">
-        <a href="Home.php"><img src="LOGO 1.png" class="logo"></a>
+        <a href="Home.php"><img src="LOGO/LOGO 1.png" class="logo"></a>
         <div class="texte">JEUNE</div>
         <div class="soustexte">Je donne de la valeur à mon engagement</div>
         </div>
@@ -119,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </div>
 <div class="back">
-        <img src="logorose.png" class="bg">
+        <img src="LOGO/logorose.png" class="bg">
 </div>
         </div>
        

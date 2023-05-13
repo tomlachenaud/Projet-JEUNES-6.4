@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="icon" href="LOGO 1.png">
+    <link rel="icon" href="LOGO/LOGO 1.png">
         <title> Visteurs </title>
         <link rel="stylesheet" href="visiteurs.css">
     </head>
     <body>
 <div class="titre">
-        <a href="Home.php"><img src="LOGO 1.png" class="logo"></a>
+        <a href="Home.php"><img src="LOGO/LOGO 1.png" class="logo"></a>
         <h1>Pour faire de l'engagement une valeur !</h1>
         </div>
         <div class="boutons">
@@ -23,7 +23,7 @@
         </div>
 
         <div class="back">
-        <img src="background.png" class="bg">
+        <img src="LOGO/background.png" class="bg">
         <div class="main">
             <h2>De quoi s'agit-il ?</h2>
             <b>D’une opportunite :</b> celle qu’un engagement quel qu’il soit puisse etre

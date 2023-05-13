@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
 
     // Création du nom de fichier basé sur l'adresse e-mail
+    $_SESSION['email'] =$email;
     $_SESSION['filename'] =$email . ".txt";
     $filename = $email . ".txt";
 
@@ -13,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $password = $_POST['password'];
 
   // Lire le contenu du fichier texte
-  $content = file_get_contents($filename);
+  $content = file_get_contents($email.'/'.$filename);
 
   // Vérifier si le texte est présent dans le contenu du fichier texte
   if (strpos($content, $email) !== false && strpos($content, $password) !== false) {
@@ -29,14 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="icon" href="LOGO 1.png">
+    <link rel="icon" href="LOGO/LOGO 1.png">
         <title>Connexion Jeune</title>
         <link rel="stylesheet" href="Connexionjeune.css">
 
     </head>
     <body>
     <div class="titre">
-        <a href="Home.php"><img src="LOGO 1.png" class="logo"></a>
+        <a href="Home.php"><img src="LOGO/LOGO 1.png" class="logo"></a>
         <div class="texte">JEUNE</div>
         <div class="soustexte">Je donne de la valeur à mon engagement</div>
         </div>

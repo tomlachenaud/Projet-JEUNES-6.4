@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html> 
     <head>
-    <link rel="icon" href="LOGO 1.png">
+    <link rel="icon" href="LOGO/LOGO 1.png">
         <title>Home</title>
         <link rel="stylesheet" href="Home.css">
 </head>
 <body>
     <div class="haut">
     <h1>Pour faire de l'engagement une valeur !</h1>
-    <img src="LOGO 1.png" class="logo" >
+    <img src="LOGO/LOGO 1.png" class="logo" >
     <h2>... l'expression d'un potentiel
         <br> la promesse d'une richesse !
     </h2>

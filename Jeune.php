@@ -3,7 +3,8 @@
 // Lire le contenu du fichier texte
 session_start();
 $filename=$_SESSION['filename'];
-$file = fopen($filename, 'r');
+$email=$_SESSION['email'];
+$file = fopen($email.'/'.$filename, 'r');
 if ($file) {
     $line1 = fgets($file);
     $line2 = fgets($file);
@@ -60,12 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
     <head>
         <title>Jeune</title>
-        <link rel="icon" href="LOGO 1.png">
+        <link rel="icon" href="LOGO/LOGO 1.png">
         <link rel="stylesheet" href="Jeunes.css">
     </head>
     <body>
     <div class="titre">
-        <a href="Home.php"><img src="LOGO 1.png" class="logo"></a>
+        <a href="Home.php"><img src="LOGO/LOGO 1.png" class="logo"></a>
         <div class="texte">JEUNE</div>
         <div class="soustexte">Je donne de la valeur à mon engagement</div>
         </div>
