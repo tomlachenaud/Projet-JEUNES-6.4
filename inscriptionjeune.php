@@ -1,4 +1,5 @@
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération des valeurs soumises par le formulaire
     $nom = $_POST["nom"];
@@ -16,16 +17,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Création du nom de fichier basé sur l'adresse e-mail
         $filename = $email . ".txt";
+        $_SESSION['filename'] =$email . ".txt";
         
         // Création du contenu à écrire dans le fichier
-        $contenu = "Nom: " . $nom . "\n";
-        $contenu .= "Prénom: " . $prenom . "\n";
-        $contenu .= "Date de naissance: " . $dateNaissance . "\n";
-        $contenu .= "Email: " . $email . "\n";
-        $contenu .= "Mot de Passe: " . $password . "\n";
-        $contenu .= "Reseau social: " . $social . "\n";
-        $contenu .= "MES ENGAGEMENTS: " . $engagement . "\n";
-        $contenu .= "DUREE: " . $duree . "\n";
+        $contenu =  $nom . "\n";
+        $contenu .= $prenom . "\n";
+        $contenu .=  $dateNaissance . "\n";
+        $contenu .=  $email . "\n";
+        $contenu .=  $password . "\n";
+        $contenu .=  $social . "\n";
+        $contenu .=  $engagement . "\n";
+        $contenu .=  $duree . "\n";
         file_put_contents($filename, $contenu);
 
         header("Location: Jeune.php");
@@ -33,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <div class="form-group">
         <label for="date_naissance">Date de naissance :</label>
-        <input type="texte" name="date_naissance" required class="date"><br>
+        <input type="date" name="date_naissance" required class="date"><br>
         </div>
         
         <div class="form-group">

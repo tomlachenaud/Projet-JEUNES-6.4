@@ -1,9 +1,11 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    session_start();
     // Récupération de l'e-mail soumis par le formulaire
     $email = $_POST["email"];
 
     // Création du nom de fichier basé sur l'adresse e-mail
+    $_SESSION['filename'] =$email . ".txt";
     $filename = $email . ".txt";
 
   // Récupérer les données saisies dans la page web
@@ -21,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo 'Identifiants invalides';
 
   }
-
 }
 ?>
 
