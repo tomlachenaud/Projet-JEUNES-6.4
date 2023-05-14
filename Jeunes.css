@@ -10,7 +10,7 @@
 }
 
 .logo {
-    
+    margin-left:2%;
     display: block;
     margin-right: auto;
     width: 40%;
@@ -18,6 +18,7 @@
 }
 
 .texte {
+    margin-right: 2%;
     color: #C62F7C;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 800%;
@@ -26,6 +27,7 @@
 }
 
 .soustexte {
+    margin-right: 2%;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 200%;

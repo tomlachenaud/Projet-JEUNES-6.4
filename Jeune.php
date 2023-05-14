@@ -1,9 +1,8 @@
-
 <?php
 // Lire le contenu du fichier texte
 session_start();
-$filename=$_SESSION['filename'];
-$email=$_SESSION['email'];
+$filename = $_SESSION['filename'];
+$email = $_SESSION['email'];
 $file = fopen($email.'/'.$filename, 'r');
 if ($file) {
     $line1 = fgets($file);
@@ -15,7 +14,6 @@ if ($file) {
     $line6 = fgets($file);
     $line7 = fgets($file);
     $line8 = fgets($file);
-
 
     fclose($file);
 }
@@ -47,15 +45,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contenu .=  $social . "\n";
         $contenu .=  $engagement . "\n";
         $contenu .=  $duree . "\n";
+        
+        // Vérifier si un fichier PDF a été téléchargé
+        if (isset($_FILES["pdfFile"]) && $_FILES["pdfFile"]["error"] === UPLOAD_ERR_OK) {
+            $pdfFileName = $_FILES["pdfFile"]["name"];
+            $pdfFileTmp = $_FILES["pdfFile"]["tmp_name"];
+            $pdfFilePath = $email . '/' . $pdfFileName;
+            
+            // Supprimer les autres fichiers PDF dans le dossier
+            $files = scandir($email);
+            foreach ($files as $file) {
+                if (pathinfo($file, PATHINFO_EXTENSION) === 'pdf' && $file !== $pdfFileName) {
+                    unlink($email . '/' . $file);
+                }
+            }
+
+            // Déplacer le fichier PDF vers l'emplacement souhaité
+            move_uploaded_file($pdfFileTmp, $pdfFilePath);
+            
+            // Enregistrer le nom du fichier PDF dans le fichier texte
+            $contenu .= "FICHIER PDF: " . $pdfFileName . "\n";
+        }
+
+        // Écriture du contenu dans le fichier texte
         file_put_contents($filename, $contenu);
 
         header("Location: Jeune.php");
         exit();
-    
     }
 }
-
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -80,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </div>
 
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
         <label for="nom">Nom :</label>
         <input type="text" name="nom" required class="nom" value="<?php echo htmlentities($line1); ?>"><br>
         </div>
@@ -121,7 +144,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="duree">DUREE :</label>
         <input type="text" name="duree" class="duree" value="<?php echo htmlentities($line8); ?>"><br>
         </div>
+
+        <div class="form-group">
+                <label for="pdfFile">Fichier PDF :</label>
+                <input type="file" name="pdfFile" accept="application/pdf">
+            </div>
+
         <input type="submit" value="Enregistrer">
+
     </form>
+
+    <?php
+    $directory = $email; // Spécifiez le chemin vers le dossier contenant les fichiers PDF
+$files = scandir($directory); // Récupère la liste des fichiers du dossier
+
+$pdfFileName = '';
+
+// Parcourir les fichiers du dossier
+foreach ($files as $file) {
+    // Vérifier si le fichier a une extension PDF
+    if (pathinfo($file, PATHINFO_EXTENSION) === 'pdf') {
+        $pdfFileName = $file; // Récupérer le nom du premier fichier PDF trouvé
+        break; // Sortir de la boucle une fois qu'un fichier PDF est trouvé
+    }
+}
+        $pdfFilePath = $email . '/' . $pdfFileName;
+        if (file_exists($pdfFilePath)) {
+            echo '<div class="pdf-link">
+                <a href="' . $pdfFilePath . '" target="_blank">Voir le PDF</a>
+            </div>';
+        }
+        ?>
     </body>
 </html>

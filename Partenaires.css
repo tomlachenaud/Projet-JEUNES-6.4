@@ -10,6 +10,7 @@
 }
 
 .logo {
+    margin-left:2%;
     display: block;
     margin-right: auto;
     width: 40%;
@@ -17,6 +18,7 @@
 }
 
 .texte {
+    margin-right: 2%;
     color: rgb(95, 94, 94);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 500%;
