@@ -134,6 +134,9 @@
   .form-group input {
     flex: 1;
     padding: 5px;
+    background-color:#c62f7d4c;
+    border:none;
+    font-size: small;
   }
 
 
@@ -142,4 +145,31 @@
     color:#C62F7C;
     font-weight: lighter;
     text-align: center;
+  }
+
+  .soumettre{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #C62F7C;
+    color:#ffffff;
+    font-size: large;
+    font-weight: lighter;
+  }
+
+  .soumettre:hover{
+    background-color:#c62f7d63 ;
+  }
+
+  .connexion{
+    display: flex;
+    font-size: small;
+    font-weight: 50;
+    padding-top: 1%;
+  }
+
+  .connect{
+    padding-left: .5%;
+    color:#C62F7C;
+    font-size: small;
   }

@@ -113,10 +113,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="S'inscrire" class="soumettre">
         
     </form>
-    <div>Deja un compte ?
-        <form action="Connexionjeune.php">
-        <button>Connectez-vous !</button>
-        </form>
+    <div class="connexion">Deja un compte ?
+        <a href="Connexionjeune.php" class="connect">Connectez-vous !</a>
     </div>
 
 </div>
@@ -124,9 +122,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <img src="LOGO/logorose.png" class="bg">
 </div>
         </div>
-       
-        <!-- RAJOUTER MOT DE PASSE-->
-
     </body>
 </html>
 

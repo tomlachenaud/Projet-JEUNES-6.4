@@ -2,7 +2,7 @@
 <html>
     <head>
     <link rel="icon" href="LOGO/LOGO 1.png">
-        <title> Visteurs </title>
+        <title> Visiteurs </title>
         <link rel="stylesheet" href="visiteurs.css">
     </head>
     <body>

@@ -50,13 +50,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
 
         </div>
-        
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <div class="main">
+        <div class="connexion">
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <div class="form-group">
             <label for="email">Email :</label>
-            <input type="email" name="email" required><br><br>
+            <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
             <label for="password">Mot de Passe :</label>
-            <input type="password" name="password" required><br><br>
-            <input type="submit" value="Connexion">
+            <input type="password" name="password" required>
+        </div>
+            
+            <input type="submit" value="Connexion" class="soumettre">
         </form>
+        </div>
+        </div>
     </body>
 </html>
