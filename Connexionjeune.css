@@ -88,6 +88,11 @@
     font-weight: light;
 }
 
+.partenaires:hover{
+    background-color: rgb(86, 86, 86);
+    color:white;
+}
+
 .form-group {
     display: flex;
     align-items: center;

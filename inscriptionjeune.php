@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
     <body>
     <div class="titre">
-        <a href="Home.php"><img src="LOGO/LOGO 1.png" class="logo"></a>
+        <a href="Visiteurs.php"><img src="LOGO/LOGO 1.png" class="logo"></a>
         <div class="texte">JEUNE</div>
         <div class="soustexte">Je donne de la valeur à mon engagement</div>
         </div>

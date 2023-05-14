@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
     <body>
     <div class="titre">
-        <a href="Home.php"><img src="LOGO/LOGO 1.png" class="logo"></a>
+        <a href="Visiteurs.php"><img src="LOGO/LOGO 1.png" class="logo"></a>
         <div class="texte">JEUNE</div>
         <div class="soustexte">Je donne de la valeur à mon engagement</div>
         </div>
@@ -102,8 +102,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
 
         </div>
-
+        <div class="main">
+            <div class=modification>
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
+        <div class="form-group">
         <label for="nom">Nom :</label>
         <input type="text" name="nom" required class="nom" value="<?php echo htmlentities($line1); ?>"><br>
         </div>
@@ -123,10 +125,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="email" name="email" required class="email" value="<?php echo htmlentities($line4); ?>"><br>
         </div>
         
-        <div class="form-group">
-        <label for="password">Mot de Passe :</label>
-        <input type="password" name="password" id="passwordInput" required value="<?php echo htmlentities($line5); ?>">
-        <input type="button" id="showPasswordCheckbox"> Afficher le mot de passe
+        <div class="group">
+        <label for="password" class="lgroup">Mot de Passe :</label>
+        <input type="password" name="password" id="passwordInput" required value="<?php echo htmlentities($line5); ?>" class="igroup">
+        <input type="button" id="showPasswordCheckbox" class="affichage" value="&#850"> Afficher le mot de passe
         <script src="Jeune.js"></script>
         </div>
 
@@ -175,5 +177,11 @@ foreach ($files as $file) {
             </div>';
         }
         ?>
+</div>
+<div class="back">
+        <img src="LOGO/logorose.png" class="bg">
+</div>
+</div>
+
     </body>
 </html>

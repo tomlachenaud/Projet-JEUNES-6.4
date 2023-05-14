@@ -74,6 +74,11 @@ img {
     font-weight: light;
 }
 
+.jeune:hover{
+    background-color: #C62F7C;
+    color:white;
+}
+
 .referent{
     display: block;
     width: fit-content;

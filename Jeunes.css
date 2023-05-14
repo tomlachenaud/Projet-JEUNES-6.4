@@ -87,3 +87,81 @@
     font-size: x-large;
     font-weight: light;
 }
+
+.partenaires:hover{
+    background-color: rgb(86, 86, 86);
+    color:white;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .form-group label {
+    width: max-content;
+    text-align: left;
+    margin-right: 10px;
+  }
+
+  .form-group input {
+    flex: 1;
+    padding: 5px;
+    background-color:#c62f7d4c;
+    border:none;
+    font-size: small;
+  }
+
+  .group{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .lgroup {
+    width: max-content;
+    text-align: left;
+    margin-right: 10px;
+  }
+
+  .igroup {
+    flex: 1;
+    padding: 5px;
+    background-color:#c62f7d4c;
+    border:none;
+    font-size: small;
+  }
+
+
+  .main{
+    padding-top: 7%;
+}
+
+.modification{
+    border: solid 1px #DE86B2;
+    background-color: rgb(255, 255, 255);
+    margin-left: 23%;
+    margin-right: 23%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #C62F7C;
+    position : relative;
+    font-weight: bold;
+    font-size: x-large;
+    padding: 1.5%;
+
+}
+
+.bg {
+    width: 90%;
+    margin-top: -15%;
+    margin-left: 2%;
+}
+
+.affichage{
+background-color: #c62f7d4c;
+  cursor: pointer;
+  border:none;
+  height: 26px;
+  font-size: 40px;
+}

@@ -166,6 +166,11 @@ margin-top: 10%;
     font-weight: light;
 }
 
+.jeune:hover{
+    background-color: #C62F7C;
+    color:white;
+}
+
 .referent{
     display: block;
     width: fit-content;
@@ -194,4 +199,9 @@ margin-top: 10%;
     color:rgb(86, 86, 86);
     font-size: x-large;
     font-weight: light;
+}
+
+.partenaires:hover{
+    background-color: rgb(86, 86, 86);
+    color:white;
 }
