@@ -8,8 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $social = $_POST["social"];
-    $engagement = $_POST["engagement"];
-    $duree = $_POST["duree"];
     
     // Validation des champs
     if (empty($nom) || empty($prenom) || empty($dateNaissance) || empty($email) || empty($password)) {
@@ -27,8 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contenu .=  $email . "\n";
         $contenu .=  $password . "\n";
         $contenu .=  $social . "\n";
-        $contenu .=  $engagement . "\n";
-        $contenu .=  $duree . "\n";
         mkdir($email);
         file_put_contents($email.'/'.$filename, $contenu);
 
@@ -98,16 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-group">
         <label for="social">Reseau Social :</label>
         <input type="text" name="social" class="social"><br>
-        </div>
-        
-        <div class="form-group">
-        <label for="engagement">MON ENGAGEMENT :</label>
-        <input type="text" name="engagement"class="engagement"><br>
-        </div>
-        
-        <div class="form-group">
-        <label for="duree">DUREE :</label>
-        <input type="text" name="duree" class="duree"><br>
         </div>
     
         <input type="submit" value="S'inscrire" class="soumettre">

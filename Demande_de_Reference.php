@@ -22,9 +22,10 @@
             </form>
         </div>
         <div class="main">
-            <div class=reference>
-            <u>DEMANDE DE REFERENCE</u> : <BR></BR>
+            <div class="page">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
+        <div class="reference">
+        <u>DEMANDE DE REFERENCE</u> : <BR></BR>
         <div class="form-group">
         <label for="nom">NOM :</label>
         <input type="text" name="nom" required><br>
@@ -61,10 +62,14 @@
         <label for="duree">DURÉE :</label>
         <input type="text" name="duree" ><br>
         </div>
+</div>
+        
         <input type="submit" value="Envoyer au Referent" class="soumettre">
         </form>
-        </div>
+</div>
         <div class="back">
         <img src="LOGO/logorose.png" class="bg">
+</div>
+</div>
     </body>
 </html>

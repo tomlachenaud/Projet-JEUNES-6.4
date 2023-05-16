@@ -150,3 +150,7 @@
   .soumettre:hover{
     background-color:#c62f7d63 ;
   }
+
+  .page{
+    position:relative;
+  }

@@ -12,8 +12,6 @@ if ($file) {
     $line4 = fgets($file);
     $line5 = fgets($file);
     $line6 = fgets($file);
-    $line7 = fgets($file);
-    $line8 = fgets($file);
 
     fclose($file);
 }
@@ -26,8 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $social = $_POST["social"];
-    $engagement = $_POST["engagement"];
-    $duree = $_POST["duree"];
     
     // Validation des champs
     if (empty($nom) || empty($prenom) || empty($dateNaissance) || empty($email) || empty($password)) {
@@ -43,8 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contenu .=  $email . "\n";
         $contenu .=  $password . "\n";
         $contenu .=  $social . "\n";
-        $contenu .=  $engagement . "\n";
-        $contenu .=  $duree . "\n";
         
         // Vérifier si un fichier PDF a été téléchargé
         if (isset($_FILES["pdfFile"]) && $_FILES["pdfFile"]["error"] === UPLOAD_ERR_OK) {
@@ -136,16 +130,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-group">
         <label for="social">RÉSEAU SOCIAL :</label>
         <input type="text" name="social" class="social" value="<?php echo htmlentities($line6); ?>"><br>
-        </div>
-        
-        <div class="form-group">
-        <label for="engagement">MON ENGAGEMENT :</label>
-        <input type="text" name="engagement"class="engagement" value="<?php echo htmlentities($line7); ?>"><br>
-        </div>
-        
-        <div class="form-group">
-        <label for="duree">DURÉE :</label>
-        <input type="text" name="duree" class="duree" value="<?php echo htmlentities($line8); ?>"><br>
         </div>
 
         <div class="PDF">
