@@ -104,36 +104,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="main">
             <div class=modification>
+            <u>PROFILE</u> : <BR></BR>
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
         <div class="form-group">
-        <label for="nom">Nom :</label>
+        <label for="nom">NOM :</label>
         <input type="text" name="nom" required class="nom" value="<?php echo htmlentities($line1); ?>"><br>
         </div>
 
         <div class="form-group">
-        <label for="prenom">Prénom :</label>
+        <label for="prenom">PRÉNOM :</label>
         <input type="text" name="prenom" required class="prenom" value="<?php echo htmlentities($line2); ?>"><br>
         </div>
         
         <div class="form-group">
-        <label for="date_naissance">Date de naissance :</label>
+        <label for="date_naissance">DATE DE NAISSANCE :</label>
         <input type="date" name="date_naissance" required class="date" value="<?php echo htmlentities($line3); ?>"><br>
         </div>
         
         <div class="form-group">
-        <label for="email">Email :</label>
+        <label for="email">EMAIL :</label>
         <input type="email" name="email" required class="email" value="<?php echo htmlentities($line4); ?>"><br>
         </div>
         
         <div class="group">
-        <label for="password" class="lgroup">Mot de Passe :</label>
+        <label for="password" class="lgroup">MOT DE PASSE :</label>
         <input type="password" name="password" id="passwordInput" required value="<?php echo htmlentities($line5); ?>" class="igroup">
-        <input type="button" id="showPasswordCheckbox" class="affichage" value="&#850"> Afficher le mot de passe
+        <input type="button" id="showPasswordCheckbox" class="affichage" value="&#850">
         <script src="Jeune.js"></script>
         </div>
 
         <div class="form-group">
-        <label for="social">Reseau Social :</label>
+        <label for="social">RÉSEAU SOCIAL :</label>
         <input type="text" name="social" class="social" value="<?php echo htmlentities($line6); ?>"><br>
         </div>
         
@@ -143,20 +144,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         
         <div class="form-group">
-        <label for="duree">DUREE :</label>
+        <label for="duree">DURÉE :</label>
         <input type="text" name="duree" class="duree" value="<?php echo htmlentities($line8); ?>"><br>
         </div>
 
-        <div class="form-group">
+        <div class="PDF">
                 <label for="pdfFile">Fichier PDF :</label>
                 <input type="file" name="pdfFile" accept="application/pdf">
             </div>
-
-        <input type="submit" value="Enregistrer">
-
-    </form>
-
-    <?php
+            
+            <?php
     $directory = $email; // Spécifiez le chemin vers le dossier contenant les fichiers PDF
 $files = scandir($directory); // Récupère la liste des fichiers du dossier
 
@@ -173,13 +170,29 @@ foreach ($files as $file) {
         $pdfFilePath = $email . '/' . $pdfFileName;
         if (file_exists($pdfFilePath)) {
             echo '<div class="pdf-link">
-                <a href="' . $pdfFilePath . '" target="_blank">Voir le PDF</a>
+                <a href="' . $pdfFilePath . '" target="_blank" class="lien">Voir le PDF</a>
             </div>';
         }
         ?>
+        <input type="submit" value="Enregistrer" class="soumettre">
+
+    </form>
+
+    
+</div>
+<br><br><br>
+<div class="modification">
+<u>REFERENCE :</u> 
+
+<form action="Demande_de_Reference.php">
+    <br>
+    <button class="soumettre">Demande de Reference</button>
+</form>
+
 </div>
 <div class="back">
         <img src="LOGO/logorose.png" class="bg">
+
 </div>
 </div>
 

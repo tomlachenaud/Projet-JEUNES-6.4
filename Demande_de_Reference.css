@@ -93,13 +93,7 @@
     color:white;
 }
 
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
-  .form-group label {
+.form-group label {
     width: max-content;
     text-align: left;
     margin-right: 10px;
@@ -113,32 +107,17 @@
     font-size: small;
   }
 
-  .group{
+  .form-group {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
   }
 
-  .lgroup {
-    width: max-content;
-    text-align: left;
-    margin-right: 10px;
-  }
-
-  .igroup {
-    flex: 1;
-    padding: 5px;
-    background-color:#c62f7d4c;
-    border:none;
-    font-size: small;
-  }
-
-
   .main{
     padding-top: 7%;
 }
 
-.modification{
+.reference{
     border: solid 1px #DE86B2;
     background-color: rgb(255, 255, 255);
     margin-left: 23%;
@@ -156,38 +135,6 @@
     width: 90%;
     margin-top: -15%;
     margin-left: 2%;
-}
-
-.affichage{
-background-color: #c62f7d4c;
-  cursor: pointer;
-  border:none;
-  height: 26px;
-  font-size: 40px;
-}
-
-.PDF{
-    display: flex;
-    align-items: center;
-  }
-
-  .PDF label {
-    width: max-content;
-    text-align: left;
-    margin-right: 10px;
-  }
-
-  .PDF input{
-    padding: 5px;
-  }
-
-  .pdf-link{
-    font-size: x-small;
-    padding-bottom: 10px;
-  }
-  
-.lien{
-    color:#C62F7C;
 }
 
 .soumettre{
