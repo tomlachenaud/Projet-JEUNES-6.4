@@ -63,7 +63,32 @@
         <input type="text" name="duree" ><br>
         </div>
 </div>
-        
+        <div>
+        <div>Je suis*</div>
+        <?php
+        $elements = array(
+            "Autonome",
+            "Passionné",
+            "Réfléchi",
+            "A l'écoute",
+            "Organisé",
+            "Passionné",
+            "Fiable",
+            "Patient",
+            "Réfléchi",
+            "Responsable",
+            "Sociable",
+            "Optimiste",
+        );
+
+        foreach ($elements as $element) {
+            echo '<input type="checkbox" name="elements[]" value="' . $element . '"> ' . $element . '<br>';
+        }
+        ?>
+        </div>
+
+        <input type="submit" value="Valider">
+        </form>
         <input type="submit" value="Envoyer au Referent" class="soumettre">
         </form>
 </div>
