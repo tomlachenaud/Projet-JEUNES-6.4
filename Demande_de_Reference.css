@@ -111,6 +111,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    margin-right: 25%;
   }
 
   .main{
@@ -118,32 +119,36 @@
 }
 
 .reference{
+    max-width: 80%;
+    margin: 0 auto;
     border: solid 1px #DE86B2;
     background-color: rgb(255, 255, 255);
-    margin-left: 23%;
-    margin-right: 23%;
     font-family: Arial, Helvetica, sans-serif;
     color: #C62F7C;
-    position : relative;
+    position: relative;
     font-weight: bold;
     font-size: x-large;
     padding: 1.5%;
+    height: 520px;
 
 }
 
 .bg {
     width: 90%;
-    margin-top: -15%;
+    margin-top: -30%;
     margin-left: 2%;
 }
 
 .soumettre{
+    position: relative;
+    margin-top: -7%;
+    margin-left: 33%;
     display: block;
     width: fit-content;
     border-style: none;
     background-color: #C62F7C;
     color:#ffffff;
-    font-size: large;
+    font-size: x-large;
     font-weight: lighter;
   }
 
@@ -154,3 +159,47 @@
   .page{
     position:relative;
   }
+
+  .cadre_head{
+    background-image: linear-gradient(to right, #ffffff, #ca0068);
+    text-align:right;
+    color: #ffffff;
+    padding: 2%;
+}
+
+.cadre_body{
+    color:#000000;
+    font-size: large;
+    padding:5%;
+    line-height: 200%;
+    text-align: left;
+}
+
+.cadre{
+    width:20%;
+    position: absolute;
+    top: 0;
+    right: 2%;
+    margin-top: 2.5%;
+    height: 90%;
+    background-image: linear-gradient(to right, #fcf7f8, #F8E7EB);
+}
+
+.text_haut_cadre{
+    position: absolute;
+    top: 0;
+    right: 2%;
+    font-size: large;
+    padding-top: .5%;
+}
+
+.text_bas_cadre{
+    position: absolute;
+    top: 0;
+    margin-top: 225%;
+    padding: 4%;
+    margin-left: 6%;
+    font-size: small;
+    color:#C62F7C;
+}
+  

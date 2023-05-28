@@ -1,20 +1,7 @@
 <?php
-// Lire le contenu du fichier texte
 session_start();
 $filename = $_SESSION['filename'];
 $email = $_SESSION['email'];
-$file = fopen($email.'/'.$filename, 'r');
-if ($file) {
-    $line1 = fgets($file);
-    $line2 = fgets($file);
-    $date = fgets($file);
-    $line3 = date("Y-m-d", strtotime($date));
-    $line4 = fgets($file);
-    $line5 = fgets($file);
-    $line6 = fgets($file);
-
-    fclose($file);
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération des valeurs soumises par le formulaire
@@ -24,14 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $social = $_POST["social"];
-    
+
     // Validation des champs
     if (empty($nom) || empty($prenom) || empty($dateNaissance) || empty($email) || empty($password)) {
         echo "Veuillez remplir tous les champs obligatoires.";
     } else {
         // Création du nom de fichier basé sur l'adresse e-mail
         $filename = $email . ".txt";
-        
+
         // Création du contenu à écrire dans le fichier
         $contenu =  $nom . "\n";
         $contenu .= $prenom . "\n";
@@ -39,40 +26,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contenu .=  $email . "\n";
         $contenu .=  $password . "\n";
         $contenu .=  $social . "\n";
-        
-        // Vérifier si un fichier PDF a été téléchargé
-        if (isset($_FILES["pdfFile"]) && $_FILES["pdfFile"]["error"] === UPLOAD_ERR_OK) {
-            $pdfFileName = $_FILES["pdfFile"]["name"];
-            $pdfFileTmp = $_FILES["pdfFile"]["tmp_name"];
-            $pdfFilePath = $email . '/' . $pdfFileName;
-            
-            // Supprimer les autres fichiers PDF dans le dossier
-            $files = scandir($email);
-            foreach ($files as $file) {
-                if (pathinfo($file, PATHINFO_EXTENSION) === 'pdf' && $file !== $pdfFileName) {
-                    unlink($email . '/' . $file);
+
+        // Ouvrir le fichier en mode écriture ("w")
+        $file = fopen($email.'/'.$filename, 'w');
+        if ($file) {
+            // Écrire le nouveau contenu dans le fichier
+            fwrite($file, $contenu);
+
+            // Fermer le fichier
+            fclose($file);
+
+            // Vérifier si un fichier PDF a été téléchargé
+            if (isset($_FILES["pdfFile"]) && $_FILES["pdfFile"]["error"] === UPLOAD_ERR_OK) {
+                $pdfFileName = $_FILES["pdfFile"]["name"];
+                $pdfFileTmp = $_FILES["pdfFile"]["tmp_name"];
+                $pdfFilePath = $email . '/' . $pdfFileName;
+
+                // Supprimer les autres fichiers PDF dans le dossier
+                $files = scandir($email);
+                foreach ($files as $file) {
+                    if (pathinfo($file, PATHINFO_EXTENSION) === 'pdf' && $file !== $pdfFileName) {
+                        unlink($email . '/' . $file);
+                    }
                 }
+
+                // Déplacer le fichier PDF vers l'emplacement souhaité
+                move_uploaded_file($pdfFileTmp, $pdfFilePath);
+
+                // Enregistrer le nom du fichier PDF dans le fichier texte
+                $contenu .= "FICHIER PDF: " . $pdfFileName . "\n";
             }
 
-            // Déplacer le fichier PDF vers l'emplacement souhaité
-            move_uploaded_file($pdfFileTmp, $pdfFilePath);
-            
-            // Enregistrer le nom du fichier PDF dans le fichier texte
-            $contenu .= "FICHIER PDF: " . $pdfFileName . "\n";
+            header("Location: Jeune.php");
+            exit();
+        } else {
+            echo "Impossible d'ouvrir le fichier en écriture.";
         }
-
-        // Écriture du contenu dans le fichier texte
-        file_put_contents($filename, $contenu);
-
-        header("Location: Jeune.php");
-        exit();
     }
 }
+
+// Lire le contenu du fichier texte
+$file = fopen($email.'/'.$filename, 'r');
+if ($file) {
+    $line1 = fgets($file);
+    $line2 = fgets($file);
+    $date = fgets($file);
+    $line3 = date("Y-m-d", strtotime($date));
+    $line4 = fgets($file);
+    $line5 = fgets($file);
+    $line6 = fgets($file);
+    fclose($file);
+} else {
+    echo "Impossible d'ouvrir le fichier en lecture.";
+}
+
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -168,9 +176,10 @@ foreach ($files as $file) {
 <div class="modification">
 <u>REFERENCE :</u> 
 
-<form action="Demande_de_Reference.php">
+<form action="Demande_de_Reference.php" method="GET">
     <br>
-    <button class="soumettre">Demande de Reference</button>
+    <input type="hidden" name="email" value="<?php echo htmlentities($line4); ?>">
+    <button type="submit" class="soumettre">Demande de Reference</button>
 </form>
 
 </div>
