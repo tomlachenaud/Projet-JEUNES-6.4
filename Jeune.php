@@ -182,6 +182,16 @@ foreach ($files as $file) {
     <button type="submit" class="soumettre">Demande de Reference</button>
 </form>
 
+            echo "<br> <input type='checkbox'>";
+            echo "$namer $prenomr : Validé !<br>";
+        } else {
+            echo "<br>$namer $prenomr : En attente de validation!<br>";
+        }
+    }
+}
+?>
+
+</div>
 </div>
 <div class="back">
         <img src="LOGO/logorose.png" class="bg">
