@@ -65,6 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+
+
 // Lire le contenu du fichier texte
 $file = fopen($email.'/'.$filename, 'r');
 if ($file) {
@@ -174,23 +176,61 @@ foreach ($files as $file) {
 </div>
 <br><br><br>
 <div class="modification">
-<u>REFERENCE :</u> 
+<u>REFERENCE</u> : 
 
 <form action="Demande_de_Reference.php" method="GET">
     <br>
     <input type="hidden" name="email" value="<?php echo htmlentities($line4); ?>">
     <button type="submit" class="soumettre">Demande de Reference</button>
 </form>
+<div class="lister">
+    <form action="Envoyer_au_Consultant.php">
+<?php 
 
-            echo "<br> <input type='checkbox'>";
-            echo "$namer $prenomr : Validé !<br>";
-        } else {
-            echo "<br>$namer $prenomr : En attente de validation!<br>";
+    // Vérifier si le fichier "referents.txt" existe
+if (file_exists($email.'/referents.txt')) {
+    // Ouvrir le fichier en mode lecture
+    $file = fopen($email.'/referents.txt', 'r');
+    if ($file) {
+        // Tableau pour stocker les lignes du fichier
+        $lines = array();
+
+        // Lire le fichier ligne par ligne jusqu'à la fin
+        while (($line = fgets($file)) !== false) {
+            // Supprime les espaces en début et fin de ligne
+            $line = trim($line);
+            // Vérifie si la ligne n'est pas vide
+            if (!empty($line)) {
+                $lines[] = $line; // Ajoute la ligne au tableau
+            }
+        }
+        // Fermer le fichier
+        fclose($file);
+    }
+
+    foreach ($lines as $liner) {
+        $ref = fopen($liner . '/' . $liner . '.txt', 'r');
+        if ($ref) {
+            $namer = fgets($ref);
+            $prenomr = fgets($ref);
+            fclose($ref);
+            if (file_exists($liner.'/valide.txt')) {
+                echo "<br>";
+                echo "$namer $prenomr : Validé !<br>";
+            } else {
+                echo "<br>$namer $prenomr : En attente de validation!<br>";
+            }
         }
     }
+} else {
+    exit(); // Le fichier "referents.txt" n'existe pas, arrête l'exécution du script
 }
-?>
 
+
+    
+?>
+    <button type="submit" class="soumettre">Envoyer au consultant</button>
+</form>
 </div>
 </div>
 <div class="back">

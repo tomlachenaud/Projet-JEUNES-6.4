@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <head>
     <link rel="icon" href="LOGO/LOGO 1.png">
         <title >Inscription Jeune</title>
-        <link rel="stylesheet" href="inscriptionjeune.css">
+        <link rel="stylesheet" href="Inscriptionjeune.css">
 
 
     </head>

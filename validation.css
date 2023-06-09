@@ -1,0 +1,104 @@
+.textehaut{
+    color:#B6CD54;
+    font-weight: lighter;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    position: relative;
+    padding-top: 10%;
+  }
+
+  .titre {
+    padding-bottom: 2%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to right, #ffffff, #cac9c9);
+    margin-left: -1%;
+    margin-right: -0.7%;
+    margin-top: -1%;
+}
+
+.logo {
+    margin-left:2%;
+    display: block;
+    margin-right: auto;
+    width: 38%;
+    position: absolute;
+}
+
+.texte {
+    margin-right: 2%;
+    color: #B6CD54;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 700%;
+    text-align: right;
+    padding-top: 10%;
+}
+
+.soustexte {
+    margin-right: 2%;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 200%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.boutons{
+    justify-content: space-evenly;
+    display: flex;
+    background-color:#cac9c9;
+    width:60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    margin-bottom: -5%;
+    
+
+}
+
+.jeune{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #ffffff00;
+    color:#C62F7C;
+    font-size: x-large;
+    font-weight: light;
+}
+
+.referent{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #4DA453;
+    color:#ffffff;
+    font-size: x-large;
+    font-weight: light;
+}
+
+.consultant{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #f1f1f100;
+    color:#00A0D5;
+    font-size: x-large;
+    font-weight: light;
+}
+
+.partenaires{
+    display: block;
+    width: fit-content;
+    border-style: none;
+    background-color: #f1f1f100;
+    color:rgb(86, 86, 86);
+    font-size: x-large;
+    font-weight: light;
+}
+
+.partenaires:hover{
+    background-color: rgb(86, 86, 86);
+    color:white;
+}

@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->addReplyTo('projeune64@gmail.com');
             $mail->addAddress($email);
             $mail->Subject = 'Demande de référence';
-            $mail->Body = 'Cliquez sur le lien suivant pour accéder à la page Referent.php : <a href="http://localhost:8888/Referent.php?&filename=' . urlencode($_SESSION['filenameJ']) . '&email=' . urlencode($_SESSION['emailJ']) . '&emailref=' . urlencode($email) . '&filenameref=' . urlencode($filename) . '">Lien vers Referent.php</a>';
+            $mail->Body = 'Cliquez sur le lien suivant pour accéder à la page Referent.php : http://localhost:8888/Referent.php?&filename=' . urlencode($_SESSION['filenameJ']) . '&email=' . urlencode($_SESSION['emailJ']) . '&emailref=' . urlencode($email) . '&filenameref=' . urlencode($filename) .'';
 
             if ($mail->send()) {
                 echo 'L\'e-mail a été envoyé avec succès.';
@@ -82,7 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             file_put_contents($email . '/' . $filename, $contenu);
-            file_put_contents($email . '/' . "checkboxes.txt", $cases);
+            $check=fopen($_SESSION['emailJ'] . '/' . "checkboxes.txt","w");
+            if($check){
+                fwrite($check,$cases);
+                fclose($check);
+            }
             file_put_contents($_SESSION["emailJ"].'/'. 'referents.txt', $email."\n", FILE_APPEND);
 
             // Création du formulaire caché
@@ -105,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <head>
         <title>Demande de Reference</title>
         <link rel="icon" href="LOGO/LOGO 1.png">
-        <link rel="stylesheet" href="Demande_de_Reference.css">
+        <link rel="stylesheet" href="Demande_De_Reference.css">
         <script src="demande_de_reference.js"></script>
     </head>
     <body>

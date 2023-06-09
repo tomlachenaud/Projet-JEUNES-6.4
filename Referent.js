@@ -13,16 +13,6 @@
         }
     }
 
-    function envoyerEmail() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                alert(xhr.responseText);
-            }
-        };
-        xhr.send();
-    }
 
 
     function validateForm() {

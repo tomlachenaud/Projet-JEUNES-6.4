@@ -203,3 +203,14 @@ background-color: #c62f7d4c;
   .soumettre:hover{
     background-color:#c62f7d63 ;
   }
+
+.lister{
+  align-items: center;
+  font-size: large;
+
+}
+
+.lister input[type="checkbox"] {
+  margin-right: 5px;
+}
+

@@ -1,11 +1,10 @@
 <?php
 session_start();
-$filename = $_SESSION['filename'];
-$email = $_SESSION['email'];
-$filenameref = $_SESSION['filenameref'];
-$emailref = $_SESSION['emailref'];
-$fileref = fopen($emailref.'/'.$filenameref, 'r');
-$file = fopen($email.'/'.$filename, 'r');
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $_SESSION['filename'] = $filename = trim($_GET['filename']);
+    $_SESSION['email'] = $email = trim($_GET['email']);
+    $file = fopen(trim($email) . '/' . trim($filename), 'r');
+    
     if ($file) {
     $line1 = fgets($file);
     $line2 = fgets($file);
@@ -17,21 +16,25 @@ $file = fopen($email.'/'.$filename, 'r');
 
     fclose($file);
 }
-
-if ($fileref) {
-    $line1ref = fgets($fileref);
-    $line2ref = fgets($fileref);
-    $dateref = fgets($fileref);
-    $line3ref = date("Y-m-d", strtotime($dateref));
-    $line4ref = fgets($fileref);
-    $line5ref = fgets($fileref);
-    $line6ref = fgets($fileref);
-    $line7ref = fgets($fileref);
-    $line8ref = fgets($fileref);
-    $line9ref = fgets($fileref);
-
+$checkJ=fopen(trim($email) . '/checkboxes.txt', 'r');
+if ($checkJ){
+    $lines = array();
+    
+        // Lire le fichier ligne par ligne jusqu'à la fin
+        while (($line = fgets($checkJ)) !== false) {
+                    // Supprime les espaces en début et fin de ligne
+                    $line = trim($line);
+            // Vérifie si la ligne n'est pas vide
+            if (!empty($line)) {
+                $lines[] = $line; // Ajoute la ligne au tableau
+            }
+        }
+        $_SESSION['checkboxes']=$lines;
+        // Fermer le fichier
+        fclose($checkJ);
 }
-fclose($fileref);
+}
+
 
 ?>
 
@@ -57,7 +60,22 @@ fclose($fileref);
             <button class="partenaires">PARTENAIRES</button>
         </form>
     </div>
+
+
     <div class="page">
+    <div class="presentation">
+            <h2>De quoi s'agit-il ?</h2>
+            <b>D’une opportunite :</b> celle qu’un engagement quel qu’il soit puisse etre
+considerer a sa juste valeur !
+            <br>Toute experience est source d’enrichissement et doit d’etre reconnu largement.
+            <br>Elle revele un potentiel, l’expression d’un savoir-etre a concretiser.
+            <h2>A qui s'adresse-t'il ?</h2>
+            <b>A vous, jeunes entre 16 et 30 ans,</b> qui vous etes investis spontanement dans une association ou dans tout type d’action formelle ou informelle, et qui avez partage de votre temps, de votre energie, pour apporter un soutien, une aide, une competence.<br>
+            <br><b>A vous,responsables de structures ou referents d’un jour,</b> qui avez croise la route de ces jeunes et avez beneficie même ponctuellement de cette implication citoyenne !
+            <br>C’est l’occasion de vous engager a votre tour pour ces jeunes en confirmant leur richesse pour en avoir ete un temps les temoins mais aussi les beneficiaires ! <br>
+            <br> <b>A vous, employeurs, recruteurs en ressources humaines,</b> representants d’organismes de formation, qui recevez ces jeunes, pour un emploi, un stage, un cursus de qualification, pour qui le savoir-etre constitue le premier fondement de toute capacite humaine. <br>
+            
+        </div>
         <div class="main1">
         <div class="textehaut">Confirmez cette expérience et ce que vous avez pu constater au contact de ce jeune.</div><br><br><br>
 
@@ -107,7 +125,93 @@ fclose($fileref);
                 </form>
             </div>
         </div>
+        <?php
+        $filer = fopen($_SESSION['email'].'/referents.txt','r');
+        if($filer){
+            $lines = array();
+    
+        // Lire le fichier ligne par ligne jusqu'à la fin
+        while (($line = fgets($filer)) !== false) {
+                    // Supprime les espaces en début et fin de ligne
+                    $line = trim($line);
+            // Vérifie si la ligne n'est pas vide
+            if (!empty($line)) {
+                $lines[] = $line; // Ajoute la ligne au tableau
+            }
+        }
+        // Fermer le fichier
+        fclose($filer);
+    
+        }
 
+        foreach ($lines as $liner) {
+            $check = fopen($liner . '/' . 'checkboxesref.txt', 'r');
+            if ($check) {
+                // Tableau pour stocker les lignes du fichier
+                $checkbox_ref = array();
+        
+                // Lire le fichier ligne par ligne jusqu'à la fin
+                while (($line = fgets($check)) !== false) {
+                    // Supprime les espaces en début et fin de ligne
+                    $line = trim($line);
+        
+                    // Vérifie si la ligne n'est pas vide
+                    if (!empty($line)) {
+                        $checkbox_ref[] = $line; // Ajoute la ligne au tableau
+                    }
+                }
+                $_SESSION['checkboxes_ref']=$checkbox_ref;
+                // Fermer le fichier
+                fclose($check);
+            }
+        
+        
+            $ref = fopen($liner . '/' . $liner . '.txt', 'r');
+            if ($ref) {
+                $line1ref = fgets($ref);
+                $line2ref = fgets($ref);
+                $dateref = fgets($ref);
+                $line3ref = date("Y-m-d", strtotime($dateref));
+                $line4ref = fgets($ref);
+                $line5ref = fgets($ref);
+                $line6ref = fgets($ref);
+                $line7ref = fgets($ref);
+                $line8ref = fgets($ref);
+                $line9ref = fgets($ref);
+                    $searchString = 'Commentaires : ';
+                
+                $found = false; // Indicateur pour marquer si la chaîne de caractères a été trouvée
+                $result = ''; // Variable pour stocker le texte après la chaîne de caractères
+                
+                // Parcourt le fichier ligne par ligne jusqu'à la fin ou jusqu'à ce que la chaîne de caractères soit trouvée
+                while (($line = fgets($ref)) !== false && !$found) {
+                    if (strpos($line, $searchString) !== false) {
+                        $found = true; // La chaîne de caractères a été trouvée
+                    }
+                }
+                
+                // Si la chaîne de caractères a été trouvée, récupère le texte après la chaîne de caractères
+                if ($found) {
+                    $lines = array(); // Tableau pour stocker les lignes du fichier
+                    $mergedText = rtrim($line, "\r\n");
+                    
+                    // Parcourt le fichier ligne par ligne jusqu'à la fin
+                    while (($line = fgets($ref)) !== false) {
+                        $lines[] = $line; // Ajoute chaque ligne au tableau
+                        $line = rtrim($line, "\r\n"); // Supprime les retours à la ligne de la ligne
+                        $mergedText .= $line;
+                    }
+                }
+                else{
+                    $mergedText= $result;
+                }
+                
+                fclose($ref);
+
+            
+        }
+    
+        ?>
         <div class="main2">
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
                 <div class="reference">
@@ -151,48 +255,8 @@ fclose($fileref);
                     </div>
                     <div class="commentaire">
                         <label for="commentaire">COMMENTAIRE</label>
-                        <?php
-$filename = $_SESSION['emailref'].'/'.$_SESSION['filenameref']; 
-$searchString = 'Commentaires : ';
-
-// Vérifie si le fichier existe
-if (file_exists($filename)) {
-    // Ouvre le fichier en lecture
-    $file = fopen($filename, 'r');
-
-    // Vérifie si l'ouverture du fichier a réussi
-    if ($file) {
-        $found = false; // Indicateur pour marquer si la chaîne de caractères a été trouvée
-        $result = ''; // Variable pour stocker le texte après la chaîne de caractères
-
-        // Parcourt le fichier ligne par ligne jusqu'à la fin ou jusqu'à ce que la chaîne de caractères soit trouvée
-        while (($line = fgets($file)) !== false && !$found) {
-            if (strpos($line, $searchString) !== false) {
-                $found = true; // La chaîne de caractères a été trouvée
-                echo 'oui';
-            }
-        }
-
-        // Si la chaîne de caractères a été trouvée, récupère le texte après la chaîne de caractères
-        if ($found) {
-            $lines = array(); // Tableau pour stocker les lignes du fichier
-            $mergedText=rtrim($line, "\r\n");
-            // Parcourt le fichier ligne par ligne jusqu'à la fin
-            while (($line = fgets($file)) !== false) {
-                $lines[] = $line; // Ajoute chaque ligne au tableau
-                $line = rtrim($line, "\r\n"); // Supprime les retours à la ligne de la ligne
-                $mergedText .= $line;
-            }
-        }
-    }
-
-    // Ferme le fichier
-    fclose($file);
-
-
-}
-?>
-                        <textarea name="commentaire" class="commentaire_text"><?php echo $mergedText; ?></textarea>
+                    
+                        <textarea name="commentaire" class="commentaire_text" readonly><?php echo $mergedText; ?></textarea>
                     </div>
                     <div class="check_green">
                         <div class="green_head">
@@ -212,8 +276,12 @@ if (file_exists($filename)) {
 ?>
 </div>
 
+
                     </div>
                 </div>
+                <?php 
+    }
+    ?>
             </form>
         </div>
 

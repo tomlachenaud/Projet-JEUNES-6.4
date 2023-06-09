@@ -3,7 +3,7 @@
     <head>
     <link rel="icon" href="LOGO/LOGO 1.png">
         <title>Home</title>
-        <link rel="stylesheet" href="Home.css">
+        <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <div class="haut">

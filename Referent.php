@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     // Récupération des valeurs soumises par le formulaire
     $nom = $_POST["nom_ref"];
     $prenom = $_POST["prenom_ref"];
@@ -24,6 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkboxes_ref = $_POST["checkbox_ref"];
     $commentaire = "Commentaires : "."\n".$_POST["commentaire"];
 
+
+    // Créer un nouveau fichier valide.txt
+    $file = fopen($email .'/valide.txt', 'w');
+    if ($file) {
+        fwrite($file, 'validé');
+        fclose($file);
+    } else {
+        echo "Impossible de créer le fichier valide.txt.";
+    }
     // Validation des champs
     if (empty($nom) || empty($prenom) || empty($dateNaissance) || empty($email) || empty($phone)) {
         echo "Veuillez remplir tous les champs obligatoires.";
@@ -38,10 +48,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contenu .= $presentation . "\n";
         $contenu .= $milieu . "\n";
         $contenu .= $duree . "\n";
+        $contenuref ='';
 
+        $file = fopen($email .'/checkboxesref.txt', 'w');
+    if ($file) {
         foreach ($checkboxes_ref as $checkbox) {
-            $contenu .= $checkbox . "\n";
+            $contenuref .= $checkbox . "\n";
         }
+        fwrite($file, $contenuref);
+        fclose($file);
+    }
+
 
         $contenu .= $commentaire . "\n";
 
@@ -62,6 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Impossible d'ouvrir le fichier en écriture.";
         }
     }
+    
 }
 
 $file = fopen ($_SESSION['email'] . '/' . $_SESSION['filename'], 'r');
@@ -102,7 +120,7 @@ if ($fileref) {
 <head>
     <link rel="icon" href="LOGO/LOGO 1.png">
     <title>Referent</title>
-    <link rel="stylesheet" href="referent.css">
+    <link rel="stylesheet" href="Referent.css">
     <script src="Referent.js"></script>
 </head>
 
@@ -125,6 +143,21 @@ if ($fileref) {
     </div>
 
     <div class="page">
+
+    <div class="presentation">
+            <h2>De quoi s'agit-il ?</h2>
+            <b>D’une opportunite :</b> celle qu’un engagement quel qu’il soit puisse etre
+considerer a sa juste valeur !
+            <br>Toute experience est source d’enrichissement et doit d’etre reconnu largement.
+            <br>Elle revele un potentiel, l’expression d’un savoir-etre a concretiser.
+            <h2>A qui s'adresse-t'il ?</h2>
+            <b>A vous, jeunes entre 16 et 30 ans,</b> qui vous etes investis spontanement dans une association ou dans tout type d’action formelle ou informelle, et qui avez partage de votre temps, de votre energie, pour apporter un soutien, une aide, une competence.<br>
+            <br><b>A vous,responsables de structures ou referents d’un jour,</b> qui avez croise la route de ces jeunes et avez beneficie même ponctuellement de cette implication citoyenne !
+            <br>C’est l’occasion de vous engager a votre tour pour ces jeunes en confirmant leur richesse pour en avoir ete un temps les temoins mais aussi les beneficiaires ! <br>
+            <br> <b>A vous, employeurs, recruteurs en ressources humaines,</b> representants d’organismes de formation, qui recevez ces jeunes, pour un emploi, un stage, un cursus de qualification, pour qui le savoir-etre constitue le premier fondement de toute capacite humaine. <br>
+            
+        </div>
+
         <div class="main1">
             <div class=modification>
                 <u>PROFILE</u> : <BR></BR>
@@ -160,7 +193,7 @@ if ($fileref) {
                         <div class="pink_body">
                     <?php
     // Affichage des cases cochées
-    $filename = $_SESSION['emailref']."/checkboxes.txt";
+    $filename = $_SESSION['email']."/checkboxes.txt";
 
 // Vérifier si le fichier existe
 if (file_exists($filename)) {
@@ -335,7 +368,7 @@ if (file_exists($filename)) {
                     </div>
                     </div>
                     <br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <input type="submit" value="Valider" class="soumettre"onclick="envoyerEmail()" >
+                    <input type="submit" value="Valider" class="soumettre" >
 
             </form>
         </div>

@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <head>
     <link rel="icon" href="LOGO/LOGO 1.png">
         <title>Connexion Jeune</title>
-        <link rel="stylesheet" href="Connexionjeune.css">
+        <link rel="stylesheet" href="ConnexionJeune.css">
 
     </head>
     <body>
