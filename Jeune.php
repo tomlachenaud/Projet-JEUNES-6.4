@@ -183,13 +183,17 @@ foreach ($files as $file) {
     <input type="hidden" name="email" value="<?php echo htmlentities($line4); ?>">
     <button type="submit" class="soumettre">Demande de Reference</button>
 </form>
+
 <div class="lister">
+    <br>
     <form action="Envoyer_au_Consultant.php">
 <?php 
 
     // Vérifier si le fichier "referents.txt" existe
 if (file_exists($email.'/referents.txt')) {
     // Ouvrir le fichier en mode lecture
+    echo "Voici la liste des références envoyées : <br>";
+
     $file = fopen($email.'/referents.txt', 'r');
     if ($file) {
         // Tableau pour stocker les lignes du fichier
@@ -215,23 +219,30 @@ if (file_exists($email.'/referents.txt')) {
             $prenomr = fgets($ref);
             fclose($ref);
             if (file_exists($liner.'/valide.txt')) {
+                echo "<div class='textetab'>";
                 echo "<br>";
-                echo "$namer $prenomr : Validé !<br>";
+                echo "&#149;  $namer $prenomr : Validé !<br>";
+                echo"</div>";
             } else {
-                echo "<br>$namer $prenomr : En attente de validation!<br>";
+                echo "<div class='textetab'>";
+                echo "<br> &#149;  $namer $prenomr : En attente de validation!<br>";
+                echo"</div>";
             }
         }
     }
 } else {
+    echo "Aucune demande de référence envoyée !";
     exit(); // Le fichier "referents.txt" n'existe pas, arrête l'exécution du script
 }
 
 
     
 ?>
+<br>
     <button type="submit" class="soumettre">Envoyer au consultant</button>
 </form>
 </div>
+
 </div>
 <div class="back">
         <img src="LOGO/logorose.png" class="bg">

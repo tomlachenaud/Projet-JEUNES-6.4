@@ -126,7 +126,7 @@ considerer a sa juste valeur !
             </div>
         </div>
         <?php
-        $filer = fopen($_SESSION['email'].'/referents.txt','r');
+        $filer = fopen($_SESSION['email'].'/Consultant.txt','r');
         if($filer){
             $lines = array();
     

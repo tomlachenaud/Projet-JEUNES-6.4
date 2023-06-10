@@ -35,8 +35,21 @@ $mail = new PHPMailer();
             $mail->setFrom('projeune64@gmail.com');
             $mail->addReplyTo('projeune64@gmail.com');
             $mail->addAddress($emailc);
-            $mail->Subject = 'Consultation des Références ';
-            $mail->Body = 'Cliquez sur le lien suivant pour accéder à la page Referent.php : http://localhost:8888/Consultant.php?&filename=' . urlencode($_SESSION['filename']) . '&email=' . urlencode($_SESSION['email']);
+            $mail->Subject = 'Consultation des R&#233;f&#233;rences ';
+            $mail->Body = 'Bonjour,
+            
+Un utilisateur souhaite partager avec vous ses informations via la plateforme "Projet JEUNES 6.4".
+Vous ne connaissez pas la plateforme ? Voici une courte explication :
+                
+De quoi s\'agit-il ? 
+D\'une opportunite : celle qu\'un engagement quel qu\'il soit puisse etre considerer a sa juste valeur ! Toute experience est source d\'enrichissement et doit d\'etre reconnu largement. Elle revele un potentiel, l\'expression d\'un savoir-etre a concretiser.
+            
+A qui s\'adresse-t\'il ? 
+A vous, jeunes entre 16 et 30 ans, qui vous etes investis spontanement dans une association ou dans tout type d\'action formelle ou informelle, et qui avez partage de votre temps, de votre energie, pour apporter un soutien, une aide, une competence.
+A vous,responsables de structures ou referents d\'un jour, qui avez croise la route de ces jeunes et avez beneficie même ponctuellement de cette implication citoyenne ! C\'est l\'occasion de vous engager a votre tour pour ces jeunes en confirmant leur richesse pour en avoir ete un temps les temoins mais aussi les beneficiaires !
+A vous, employeurs, recruteurs en ressources humaines, representants d\'organismes de formation, qui recevez ces jeunes, pour un emploi, un stage, un cursus de qualification, pour qui le savoir-etre constitue le premier fondement de toute capacite humaine.
+
+Alors si vous souhaitez consulter les informations du Jeune qui vous contacte, cliquez sur le lien suivant : http://localhost:8888/Consultant.php?&filename=' . urlencode($_SESSION['filename']) . '&email=' . urlencode($_SESSION['email']);
 
             if ($mail->send()) {
                 echo 'L\'e-mail a été envoyé avec succès.';
@@ -88,7 +101,10 @@ exit();
                             <input type="email" name="mail" required><br>
                         </div>
 <br>   
-                    REFERENCE VALIDÉE : 
+                    <u>REFERENCE VALIDÉE</u> : 
+                    <br>
+                    <br>
+                    Veuillez chosir la/les références a envoyer au Consultant !
                     <br>
 <?php 
     // Ouvrir le fichier en mode lecture
@@ -115,8 +131,10 @@ exit();
             $prenomr = fgets($ref);
             fclose($ref);
             if (file_exists($checkbox.'/valide.txt')){
+                echo "<div class='textetab'>";
             echo "<br> <input type='checkbox' name='checkbox[]' value='$checkbox' class='check'>";
             echo "$namer $prenomr<br>";
+            echo "</div>";
     }
 }
     }

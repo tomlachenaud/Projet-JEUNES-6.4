@@ -73,7 +73,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->addReplyTo('projeune64@gmail.com');
             $mail->addAddress($email);
             $mail->Subject = 'Demande de référence';
-            $mail->Body = 'Cliquez sur le lien suivant pour accéder à la page Referent.php : http://localhost:8888/Referent.php?&filename=' . urlencode($_SESSION['filenameJ']) . '&email=' . urlencode($_SESSION['emailJ']) . '&emailref=' . urlencode($email) . '&filenameref=' . urlencode($filename) .'';
+            $mail->Body = 'Bonjour,
+            
+Un utilisateur souhaite obtenir une demande de reference de votre pars. Il a donc partage avec vous ses informations via la plateforme "Projet JEUNES 6.4".
+Vous ne connaissez pas la plateforme ? Voici une courte explication :
+                            
+De quoi s\'agit-il ? 
+D\'une opportunite : celle qu\'un engagement quel qu\'il soit puisse etre considerer a sa juste valeur ! Toute experience est source d\'enrichissement et doit d\'etre reconnu largement. Elle revele un potentiel, l\'expression d\'un savoir-etre a concretiser.
+                        
+A qui s\'adresse-t\'il ? 
+A vous, jeunes entre 16 et 30 ans, qui vous etes investis spontanement dans une association ou dans tout type d\'action formelle ou informelle, et qui avez partage de votre temps, de votre energie, pour apporter un soutien, une aide, une competence.
+A vous,responsables de structures ou referents d\'un jour, qui avez croise la route de ces jeunes et avez beneficie même ponctuellement de cette implication citoyenne ! C\'est l\'occasion de vous engager a votre tour pour ces jeunes en confirmant leur richesse pour en avoir ete un temps les temoins mais aussi les beneficiaires !
+A vous, employeurs, recruteurs en ressources humaines, representants d\'organismes de formation, qui recevez ces jeunes, pour un emploi, un stage, un cursus de qualification, pour qui le savoir-etre constitue le premier fondement de toute capacite humaine.
+            
+Alors si vous souhaitez consulter les informations du Jeune qui vous contacte, cliquez sur le lien suivant : : http://localhost:8888/Referent.php?&filename=' . urlencode($_SESSION['filenameJ']) . '&email=' . urlencode($_SESSION['emailJ']) . '&emailref=' . urlencode($email) . '&filenameref=' . urlencode($filename) .'';
 
             if ($mail->send()) {
                 echo 'L\'e-mail a été envoyé avec succès.';
