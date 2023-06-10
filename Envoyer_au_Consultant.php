@@ -62,7 +62,7 @@ exit();
     <head>
         <title>Envoyer au Consultant</title>
         <link rel="icon" href="LOGO/LOGO 1.png">
-        <link rel="stylesheet" href="Jeunes.css">
+        <link rel="stylesheet" href="Envoyer_au_Consultant.css">
     </head>
     <body>
     <div class="titre">
@@ -78,6 +78,8 @@ exit();
             <button class="partenaires">PARTENAIRES</button>
             </form>
         </div>
+        <div class="main">
+            <div class="modifications">
         <div class="lister">
 <form method="POST">
 
@@ -85,7 +87,9 @@ exit();
                             <label for="mail">EMAIL DU CONSULTANT :</label>
                             <input type="email" name="mail" required><br>
                         </div>
-
+<br>   
+                    REFERENCE VALIDÉE : 
+                    <br>
 <?php 
     // Ouvrir le fichier en mode lecture
     $file = fopen($email.'/referents.txt', 'r');
@@ -111,16 +115,19 @@ exit();
             $prenomr = fgets($ref);
             fclose($ref);
             if (file_exists($checkbox.'/valide.txt')){
-            echo "<br> <input type='checkbox' name='checkbox[]' value='$checkbox'>";
+            echo "<br> <input type='checkbox' name='checkbox[]' value='$checkbox' class='check'>";
             echo "$namer $prenomr<br>";
     }
 }
     }
 
 ?>
+<br>
                     <input type="submit" value="Envoyer au consultant" class="soumettre" >
 
 </form>
+</div>
+</div>
 </div>
 </body>
 </html>
